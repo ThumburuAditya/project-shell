@@ -28,7 +28,7 @@ systemctl enable catalogue
 systemctl start catalogue
 
 echo -e "\e[0m>>>>>>>>>>>>>>>>>>>>>>>> Copy the mongodb repo <<<<<<<<<<<<<<<<<<<<<<<<<<\e[0m"
-cp mongo.repo /etc/yum.repos.d/mongo.repo
+cp /home/centos/project-shell/mongo.repo /etc/yum.repos.d/mongo.repo
 
 echo -e "\e[0m>>>>>>>>>>>>>>>>>>>>>>>> Install mongo client <<<<<<<<<<<<<<<<<<<<<<<<<<\e[0m"
 dnf install mongodb-org-shell -y
