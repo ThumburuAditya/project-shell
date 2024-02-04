@@ -13,8 +13,8 @@ echo -e "\e[0m>>>>>>>>>>>>>>>>>>>>>>>> Unzip the frontend code <<<<<<<<<<<<<<<<<
 cd /usr/share/nginx/html
 unzip /tmp/frontend.zip
 
-echo -e "\e[0m>>>>>>>>>>>>>>>>>>>>>>>> Copy the roboshop configuration filex <<<<<<<<<<<<<<<<<<<<<<<<<<\e[0m"
-cp roboshop.conf /etc/nginx/default.d/roboshop.conf
+echo -e "\e[0m>>>>>>>>>>>>>>>>>>>>>>>> Copy the roboshop configuration file <<<<<<<<<<<<<<<<<<<<<<<<<<\e[0m"
+cp /home/centos/roboshop.conf /etc/nginx/default.d/roboshop.conf
 
 echo -e "\e[0m>>>>>>>>>>>>>>>>>>>>>>>> Restart Nginx Service <<<<<<<<<<<<<<<<<<<<<<<<<<\e[0m"
 systemctl restart nginx

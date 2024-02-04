@@ -19,7 +19,7 @@ cd /app
 npm install
 
 echo -e "\e[0m>>>>>>>>>>>>>>>>>>>>>>>> Copy the catalogue service file<<<<<<<<<<<<<<<<<<<<<<<<<<\e[0m"
-cp catalogue.service /etc/systemd/system/catalogue.service
+cp /home/centos/catalogue.service /etc/systemd/system/catalogue.service
 
 
 echo -e "\e[0m>>>>>>>>>>>>>>>>>>>>>>>> Start the catalogue service <<<<<<<<<<<<<<<<<<<<<<<<<<\e[0m"
