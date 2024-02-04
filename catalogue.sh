@@ -1,10 +1,12 @@
+source common.sh
+
 echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>>>> Install NodeJS<<<<<<<<<<<<<<<<<<<<<<<<<<\e[36m"
 dnf module disable nodejs -y
 dnf module enable nodejs:18 -y
 dnf install nodejs -y
 
 echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>>>> Add the roboshop user <<<<<<<<<<<<<<<<<<<<<<<<<<\e[36m"
-useradd roboshop
+useradd ${app_user}
 
 echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>>>> Download catalogue code <<<<<<<<<<<<<<<<<<<<<<<<<<\e[36m"
 mkdir /app

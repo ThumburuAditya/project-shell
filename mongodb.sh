@@ -1,3 +1,5 @@
+source common.sh
+
 echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>>>> Install MongoDB <<<<<<<<<<<<<<<<<<<<<<<<<<\e[36m"
 cp /home/centos/project-shell/mongo.repo /etc/yum.repos.d/mongo.repo
 dnf install mongodb-org -y
