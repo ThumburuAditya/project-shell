@@ -1,7 +1,9 @@
-source common.sh
+script=$(realpath "$0")
+script_path=$(dirname "$script")
+source ${script_path}/common.sh
 
 echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>>>> Install MongoDB <<<<<<<<<<<<<<<<<<<<<<<<<<\e[36m"
-cp /home/centos/project-shell/mongo.repo /etc/yum.repos.d/mongo.repo
+cp ${script_path}/mongo.repo /etc/yum.repos.d/mongo.repo
 dnf install mongodb-org -y
 
 echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>>>> Start MongoDB <<<<<<<<<<<<<<<<<<<<<<<<<<\e[36m"

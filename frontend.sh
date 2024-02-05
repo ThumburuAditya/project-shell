@@ -1,4 +1,6 @@
-source common.sh
+script=$(realpath "$0")
+script_path=$(dirname "$script")
+source ${script_path}/common.sh
 
 echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>>>> Install Nginx <<<<<<<<<<<<<<<<<<<<<<<<<<\e[36m"
 dnf install nginx -y
@@ -16,7 +18,7 @@ cd /usr/share/nginx/html
 unzip /tmp/frontend.zip
 
 echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>>>> Copy the roboshop configuration file <<<<<<<<<<<<<<<<<<<<<<<<<<\e[36m"
-cp /home/centos/project-shell/roboshop.conf /etc/nginx/default.d/roboshop.conf
+cp ${script_path}/roboshop.conf /etc/nginx/default.d/roboshop.conf
 
 echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>>>> Restart Nginx Service <<<<<<<<<<<<<<<<<<<<<<<<<<\e[36m"
 systemctl restart nginx

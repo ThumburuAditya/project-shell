@@ -1,4 +1,6 @@
-source common.sh
+script=$(realpath "$0")
+script_path=$(dirname "$script")
+source ${script_path}/common.sh
 
 echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>>>> Install NodeJS<<<<<<<<<<<<<<<<<<<<<<<<<<\e[36m"
 dnf module disable nodejs -y
@@ -21,7 +23,7 @@ cd /app
 npm install
 
 echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>>>> Copy the catalogue service file<<<<<<<<<<<<<<<<<<<<<<<<<<\e[36m"
-cp /home/centos/project-shell/catalogue.service /etc/systemd/system/catalogue.service
+cp ${script_path}/catalogue.service /etc/systemd/system/catalogue.service
 
 
 echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>>>> Start the catalogue service <<<<<<<<<<<<<<<<<<<<<<<<<<\e[36m"
@@ -30,7 +32,7 @@ systemctl enable catalogue
 systemctl start catalogue
 
 echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>>>> Copy the mongodb repo <<<<<<<<<<<<<<<<<<<<<<<<<<\e[36m"
-cp /home/centos/project-shell/mongo.repo /etc/yum.repos.d/mongo.repo
+cp ${script_path}/mongo.repo /etc/yum.repos.d/mongo.repo
 
 echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>>>> Install mongo client <<<<<<<<<<<<<<<<<<<<<<<<<<\e[36m"
 dnf install mongodb-org-shell -y
