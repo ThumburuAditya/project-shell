@@ -20,6 +20,12 @@ func_node(){
   func_print "Download Nodejs Dependencies"
   cd /app
   npm install
+  if [ $? -eq 0 ]
+  then
+    echo "Success"
+  else
+    echo "failure"
+  fi
 
   func_print "Copy the catalogue service file"
   cp ${script_path}/${component}.service /etc/systemd/system/${component}.service
