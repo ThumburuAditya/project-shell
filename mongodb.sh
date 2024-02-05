@@ -2,17 +2,17 @@ script=$(realpath "$0")
 script_path=$(dirname "$script")
 source ${script_path}/common.sh
 
-echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>>>> Install MongoDB <<<<<<<<<<<<<<<<<<<<<<<<<<\e[0m"
+func_print "Install MongoDB"
 cp ${script_path}/mongo.repo /etc/yum.repos.d/mongo.repo
 dnf install mongodb-org -y
 
-echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>>>> Start MongoDB <<<<<<<<<<<<<<<<<<<<<<<<<<\e[0m"
+func_print "Start MongoDB"
 systemctl enable mongod
 systemctl start mongod
 
-echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>>>> Update the listen Address of MongoDB <<<<<<<<<<<<<<<<<<<<<<<<<<\e[0m"
+func_print "Update the listen Address of MongoDB"
 sed -i -e 's|127.0.0.1|0.0.0.0|' /etc/mongod.conf
 
 
-echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>>>> Restart the MongoDB Service <<<<<<<<<<<<<<<<<<<<<<<<<<\e[0m"
+func_print "Restart the MongoDB Service"
 systemctl restart mongod

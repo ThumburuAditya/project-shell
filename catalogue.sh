@@ -5,11 +5,11 @@ component=catalogue
 
 func_node
 
-echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>>>> Copy the mongodb repo <<<<<<<<<<<<<<<<<<<<<<<<<<\e[0m"
+func_print "Copy the mongodb repo"
 cp ${script_path}/mongo.repo /etc/yum.repos.d/mongo.repo
 
-echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>>>> Install mongo client <<<<<<<<<<<<<<<<<<<<<<<<<<\e[0m"
+func_print "Install mongo client"
 dnf install mongodb-org-shell -y
 
-echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>>>> Load the schema <<<<<<<<<<<<<<<<<<<<<<<<<<\e[0m"
+func_print "Load the schema"
 mongo --host 172.31.44.217 </app/schema/catalogue.js

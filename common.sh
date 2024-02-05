@@ -1,32 +1,36 @@
 app_user=roboshop
 
 func_node(){
-  echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>>>> Install NodeJS<<<<<<<<<<<<<<<<<<<<<<<<<<\e[0m"
+  func_print "Install NodeJS"
   dnf module disable nodejs -y
   dnf module enable nodejs:18 -y
   dnf install nodejs -y
 
-  echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>>>> Add the roboshop user <<<<<<<<<<<<<<<<<<<<<<<<<<\e[0m"
+  func_print "Add the roboshop user"
   useradd ${app_user}
 
-  echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>>>> Download catalogue code <<<<<<<<<<<<<<<<<<<<<<<<<<\e[0m"
+  func_print "Download catalogue code"
   mkdir /app
   curl -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip
 
-  echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>>>> Unzip the catalogue code <<<<<<<<<<<<<<<<<<<<<<<<<<\e[0m"
+  func_print "Unzip the catalogue code"
   cd /app
   unzip /tmp/${component}.zip
 
-  echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>>>> Download Nodejs Dependencies <<<<<<<<<<<<<<<<<<<<<<<<<<\e[0m"
+  func_print "Download Nodejs Dependencies"
   cd /app
   npm install
 
-  echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>>>> Copy the catalogue service file<<<<<<<<<<<<<<<<<<<<<<<<<<\e[0m"
+  func_print "Copy the catalogue service file"
   cp ${script_path}/${component}.service /etc/systemd/system/${component}.service
 
 
-  echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>>>> Start the catalogue service <<<<<<<<<<<<<<<<<<<<<<<<<<\e[0m"
+  func_print "Start the catalogue service"
   systemctl daemon-reload
   systemctl enable ${component}
   systemctl start ${component}
+}
+
+func_print(){
+  echo -e "\e[36m>>>>>>>>>>>>>>>>>>>>>>>> $1 <<<<<<<<<<<<<<<<<<<<<<<<<<\e[0m"
 }
