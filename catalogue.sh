@@ -2,14 +2,15 @@ script=$(realpath "$0")
 script_path=$(dirname "$script")
 source ${script_path}/common.sh
 component=catalogue
+logfile=/tmp/robo.log
 
 func_node
 
 func_print "Copy the mongodb repo"
-cp ${script_path}/mongo.repo /etc/yum.repos.d/mongo.repo
+cp ${script_path}/mongo.repo /etc/yum.repos.d/mongo.repo &>>${logfile}
 
 func_print "Install mongo client"
-dnf install mongodb-org-shell -y
+dnf install mongodb-org-shell -y &>>${logfile}
 
 func_print "Load the schema"
-mongo --host 172.31.44.217 </app/schema/catalogue.js
+mongo --host 172.31.44.217 </app/schema/catalogue.js &>>${logfile}
