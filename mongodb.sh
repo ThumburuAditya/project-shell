@@ -13,6 +13,5 @@ systemctl start mongod
 func_print "Update the listen Address of MongoDB"
 sed -i -e 's|127.0.0.1|0.0.0.0|' /etc/mongod.conf
 
-
 func_print "Restart the MongoDB Service"
 systemctl restart mongod
